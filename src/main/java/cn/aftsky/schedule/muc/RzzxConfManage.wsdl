@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage"
+                  xmlns:impl="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="urn:BeanService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="urn:BeanService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="RzzxConf">
+    <sequence>
+     <element name="dbname" nillable="true" type="soapenc:string"/>
+     <element name="dbpwd" nillable="true" type="soapenc:string"/>
+     <element name="dbuser" nillable="true" type="soapenc:string"/>
+     <element name="exceptions" nillable="true" type="soapenc:string"/>
+     <element name="ipaddress" nillable="true" type="soapenc:string"/>
+     <element name="ipaddress2" nillable="true" type="soapenc:string"/>
+     <element name="ldapaddress" nillable="true" type="soapenc:string"/>
+     <element name="ldappeasedn" nillable="true" type="soapenc:string"/>
+     <element name="ldappwd" nillable="true" type="soapenc:string"/>
+     <element name="ldaprootdc" nillable="true" type="soapenc:string"/>
+     <element name="ldapsearchBase" nillable="true" type="soapenc:string"/>
+     <element name="ldapuser" nillable="true" type="soapenc:string"/>
+     <element name="port" nillable="true" type="soapenc:string"/>
+     <element name="port2" nillable="true" type="soapenc:string"/>
+     <element name="sjkljms" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Rzzxjcxx">
+    <sequence>
+     <element name="contacttous" nillable="true" type="soapenc:string"/>
+     <element name="copyright" nillable="true" type="soapenc:string"/>
+     <element name="defaultStyle" nillable="true" type="soapenc:string"/>
+     <element name="exceptions" nillable="true" type="soapenc:string"/>
+     <element name="isremenberme" nillable="true" type="soapenc:string"/>
+     <element name="loginflashurl" nillable="true" type="soapenc:string"/>
+     <element name="logouturl" nillable="true" type="soapenc:string"/>
+     <element name="quota" nillable="true" type="soapenc:string"/>
+     <element name="redirecturl" nillable="true" type="soapenc:string"/>
+     <element name="registCode" nillable="true" type="soapenc:string"/>
+     <element name="titlename" nillable="true" type="soapenc:string"/>
+     <element name="useLdap" nillable="true" type="soapenc:string"/>
+     <element name="useValidateCode" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ModifypwdSet">
+    <sequence>
+     <element name="dlcs" nillable="true" type="soapenc:string"/>
+     <element name="exceptions" nillable="true" type="soapenc:string"/>
+     <element name="promptmode" nillable="true" type="soapenc:string"/>
+     <element name="sfgzxg" nillable="true" type="soapenc:string"/>
+     <element name="times" nillable="true" type="soapenc:string"/>
+     <element name="useModifpwd" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="List">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="LoginResult">
+    <sequence>
+     <element name="email" nillable="true" type="soapenc:string"/>
+     <element name="errorInfo" nillable="true" type="soapenc:string"/>
+     <element name="name" nillable="true" type="soapenc:string"/>
+     <element name="success" nillable="true" type="soapenc:boolean"/>
+     <element name="userId" nillable="true" type="soapenc:string"/>
+     <element name="userType" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:BeanService"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage"/>
+   <import namespace="urn:BeanService"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="setModifypwdSetRequest">
+
+      <wsdl:part name="modifypwdset" type="tns1:ModifypwdSet"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserRightsResponse">
+
+      <wsdl:part name="getUserRightsReturn" type="tns1:List"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setrzzxjcxxResponse">
+
+      <wsdl:part name="setrzzxjcxxReturn" type="soapenc:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserRightsRequest">
+
+      <wsdl:part name="username" type="soapenc:string"/>
+
+      <wsdl:part name="ywxtdm" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getYwxtdmYhlxListRequest">
+
+      <wsdl:part name="ywxtdm" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserInfoResponse">
+
+      <wsdl:part name="getUserInfoReturn" type="tns1:LoginResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setrzzxconfRequest">
+
+      <wsdl:part name="rzzxConf" type="tns1:RzzxConf"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getrzzxjcxxRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserInfoRequest">
+
+      <wsdl:part name="yhm" type="soapenc:string"/>
+
+      <wsdl:part name="key" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkloginResponse">
+
+      <wsdl:part name="checkloginReturn" type="tns1:LoginResult"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkloginRequest">
+
+      <wsdl:part name="yhm" type="soapenc:string"/>
+
+      <wsdl:part name="kl" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setrzzxconfResponse">
+
+      <wsdl:part name="setrzzxconfReturn" type="soapenc:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setrzzxjcxxRequest">
+
+      <wsdl:part name="rzzxjcxx" type="tns1:Rzzxjcxx"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkLoginServiceRequest">
+
+      <wsdl:part name="yhm" type="soapenc:string"/>
+
+      <wsdl:part name="kl" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getYwxtdmListResponse">
+
+      <wsdl:part name="getYwxtdmListReturn" type="tns1:List"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getModifypwdSetResponse">
+
+      <wsdl:part name="getModifypwdSetReturn" type="tns1:ModifypwdSet"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getModifypwdSetRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getrzzxconfRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getrzzxconfResponse">
+
+      <wsdl:part name="getrzzxconfReturn" type="tns1:RzzxConf"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getrzzxjcxxResponse">
+
+      <wsdl:part name="getrzzxjcxxReturn" type="tns1:Rzzxjcxx"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setModifypwdSetResponse">
+
+      <wsdl:part name="setModifypwdSetReturn" type="soapenc:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getYwxtdmYhlxListResponse">
+
+      <wsdl:part name="getYwxtdmYhlxListReturn" type="tns1:List"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkLoginServiceResponse">
+
+      <wsdl:part name="checkLoginServiceReturn" type="soapenc:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getYwxtdmListRequest">
+
+   </wsdl:message>
+
+   <wsdl:portType name="RzzxConfManage">
+
+      <wsdl:operation name="getrzzxconf">
+
+         <wsdl:input message="impl:getrzzxconfRequest" name="getrzzxconfRequest"/>
+
+         <wsdl:output message="impl:getrzzxconfResponse" name="getrzzxconfResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getrzzxjcxx">
+
+         <wsdl:input message="impl:getrzzxjcxxRequest" name="getrzzxjcxxRequest"/>
+
+         <wsdl:output message="impl:getrzzxjcxxResponse" name="getrzzxjcxxResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setrzzxjcxx" parameterOrder="rzzxjcxx">
+
+         <wsdl:input message="impl:setrzzxjcxxRequest" name="setrzzxjcxxRequest"/>
+
+         <wsdl:output message="impl:setrzzxjcxxResponse" name="setrzzxjcxxResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getModifypwdSet">
+
+         <wsdl:input message="impl:getModifypwdSetRequest" name="getModifypwdSetRequest"/>
+
+         <wsdl:output message="impl:getModifypwdSetResponse" name="getModifypwdSetResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setModifypwdSet" parameterOrder="modifypwdset">
+
+         <wsdl:input message="impl:setModifypwdSetRequest" name="setModifypwdSetRequest"/>
+
+         <wsdl:output message="impl:setModifypwdSetResponse" name="setModifypwdSetResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getYwxtdmYhlxList" parameterOrder="ywxtdm">
+
+         <wsdl:input message="impl:getYwxtdmYhlxListRequest" name="getYwxtdmYhlxListRequest"/>
+
+         <wsdl:output message="impl:getYwxtdmYhlxListResponse" name="getYwxtdmYhlxListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getYwxtdmList">
+
+         <wsdl:input message="impl:getYwxtdmListRequest" name="getYwxtdmListRequest"/>
+
+         <wsdl:output message="impl:getYwxtdmListResponse" name="getYwxtdmListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checklogin" parameterOrder="yhm kl">
+
+         <wsdl:input message="impl:checkloginRequest" name="checkloginRequest"/>
+
+         <wsdl:output message="impl:checkloginResponse" name="checkloginResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkLoginService" parameterOrder="yhm kl">
+
+         <wsdl:input message="impl:checkLoginServiceRequest" name="checkLoginServiceRequest"/>
+
+         <wsdl:output message="impl:checkLoginServiceResponse" name="checkLoginServiceResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserRights" parameterOrder="username ywxtdm">
+
+         <wsdl:input message="impl:getUserRightsRequest" name="getUserRightsRequest"/>
+
+         <wsdl:output message="impl:getUserRightsResponse" name="getUserRightsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setrzzxconf" parameterOrder="rzzxConf">
+
+         <wsdl:input message="impl:setrzzxconfRequest" name="setrzzxconfRequest"/>
+
+         <wsdl:output message="impl:setrzzxconfResponse" name="setrzzxconfResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserInfo" parameterOrder="yhm key">
+
+         <wsdl:input message="impl:getUserInfoRequest" name="getUserInfoRequest"/>
+
+         <wsdl:output message="impl:getUserInfoResponse" name="getUserInfoResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="RzzxConfManageSoapBinding" type="impl:RzzxConfManage">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getrzzxconf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getrzzxconfRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getrzzxconfResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getrzzxjcxx">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getrzzxjcxxRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getrzzxjcxxResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setrzzxjcxx">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setrzzxjcxxRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setrzzxjcxxResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getModifypwdSet">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getModifypwdSetRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getModifypwdSetResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setModifypwdSet">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setModifypwdSetRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setModifypwdSetResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getYwxtdmYhlxList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getYwxtdmYhlxListRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getYwxtdmYhlxListResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getYwxtdmList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getYwxtdmListRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getYwxtdmListResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checklogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkloginRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkloginResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkLoginService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkLoginServiceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkLoginServiceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserRights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserRightsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserRightsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setrzzxconf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setrzzxconfRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setrzzxconfResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://pubService.webServices.zfca.zfsoft.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="RzzxConfManageService">
+
+      <wsdl:port binding="impl:RzzxConfManageSoapBinding" name="RzzxConfManage">
+
+         <wsdlsoap:address location="http://ca.muc.edu.cn/zfca/axis/RzzxConfManage"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
